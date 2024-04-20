@@ -1,0 +1,53 @@
+<div class="col-12 grid-margin stretch-card mb-0">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title" [innerText]="title"></h4>
+      <form class="forms-sample">
+        <div class="form-group">
+          <label>Tên truyện</label>
+          <input type="text" class="form-control"
+                 name="title"
+                 [(ngModel)]="param.title" placeholder="Nhập tên truyện">
+        </div>
+        <div class="form-group">
+          <label>Tác giả</label>
+          <input type="text" class="form-control"
+                 name="author"
+                 [(ngModel)]="param.author" placeholder="Nhập tác giả">
+        </div>
+        <div class="form-group">
+          <label>Hình ảnh</label>
+          <div class="container-upload" (drop)="handleDrop($event)" (dragover)="allowDrop($event)">
+            <div class="upload-box">
+              <div class="content">
+                <div class="upload-icon" (drop)="handleDrop($event)" (dragover)="allowDrop($event)">
+                  <i class="mdi mdi-cloud-upload text-dark" style="height: 100px; width: 100px;"></i>
+                </div>
+                <h5 class="text-dark" (drop)="handleDrop($event)" (dragover)="allowDrop($event)">
+                  Kéo và thả tập tin của bạn vào đây
+                </h5>
+                <p>hoặc</p>
+                <div class="upload-btn-wrapper">
+                  <button class="btn btn-gradient-primary">Tải lên</button>
+                  <input type="file" (change)="handleFileInput($event)" (drop)="handleDrop($event)"
+                         (dragover)="allowDrop($event)"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-body" [ngClass]="{'d-none' : !isShowImage}">
+            <img [src]="this.imageSrc" alt="" style="width: 200px; height: 200px;" class="ant-image-preview">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mô tả</label>
+          <textarea class="form-control" rows="4"
+                    name="description"
+                    [(ngModel)]="param.description" placeholder="Nhập mô tả"></textarea>
+        </div>
+      </form>
+      <button class="btn btn-primary mt-2" (click)="update()">Xác nhận</button>
+      <button class="btn btn-secondary ms-2 mt-2" (click)="close()">Hủy</button>
+    </div>
+  </div>
+</div>

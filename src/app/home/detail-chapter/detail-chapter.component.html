@@ -1,0 +1,22 @@
+<div class="container mt-4 bg-light">
+  <div class="row">
+    <div class="col-12 top-panel">
+      <h2 class="text-center text-danger">{{ chapter?.story?.title }}</h2>
+      <h4 class="text-center">{{ chapter.title }}</h4>
+      <h5 class="text-center">
+        <fa-icon [icon]="faUser"></fa-icon>
+        {{ chapter?.story?.author }}
+      </h5>
+      <span class="text-center">{{ dateNow | date: 'dd/MM/yyyy' }}</span>
+    </div>
+    <div class="col-4">
+      <!-- Called of font style  file -->
+      <audio controls>
+        <source src="{{ chapter?.audio }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="col-12" [innerHTML]="chapter?.content">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+    <div class="row g-4">
+      @for (item of listStory; track item) {
+        <a href="/story/detail/{{item?.storyId}}" class="card col-3 ms-1" style="">
+          <img [ngSrc]="item?.coverImage" height="283" width="220" class="object-fit-contain" alt="...">
+          <div class="card-body">
+            <p class="card-text">{{ item?.title }} - {{ item?.author }}</p>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</div>

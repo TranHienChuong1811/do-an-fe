@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <h1 class="text-center">Danh sách chương của truyện</h1>
+  <button class="btn btn-primary" (click)="openForm()">Thêm chương</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" style="width: 15%;">Mã chương</th>
+      <th scope="col" style="width: 20%;">Tên chương</th>
+      <th scope="col" style="width: 25%;">Nội dung</th>
+      <th scope="col" style="width: 15%;">Audio</th>
+      <th scope="col" style="width: 15%;">Thuộc truyện</th>
+      <th scope="col" style="width: 10%;">#</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (item of list; track item; let i = $index) {
+        <tr>
+          <th scope="row">{{ item?.chapterId }}</th>
+          <td>
+            {{ item?.title }}
+          </td>
+          <td [title]="item?.content" class="truncate" #tdElement>
+            <p [innerHTML]="item?.content | slice: 0: 100">
+            </p>
+          </td>
+          <td>
+            <audio controls>
+              <source src="{{ item?.audio }}" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>{{ item?.story?.title }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="updateForm(item)">Sửa</button>
+            <button class="btn btn-info" (click)="convertAudio(item)">Chuyển audio</button>
+            <button (click)="deleteStory(item?.chapterId)" class="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" class="text-center">Không có dữ liệu</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <h1 class="text-center">Danh sách truyện</h1>
+  <button class="btn btn-primary" (click)="openForm()">Thêm truyện</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" style="width: 10%;">Mã truyện</th>
+      <th scope="col" style="width: 20%;">Tên truyện</th>
+      <th scope="col" style="width: 15%;">Tác giả</th>
+      <th scope="col" style="width: 15%;">Ảnh</th>
+      <th scope="col" style="width: 25%;">Mô tả</th>
+      <th scope="col" style="width: 15%;">#</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (item of list; track item; let i = $index) {
+        <tr>
+          <th scope="row">{{ item?.storyId }}</th>
+          <td>
+            {{ item?.title }}
+          </td>
+          <td>{{ item?.author }}</td>
+          <td>
+            <img [ngSrc]="item?.coverImage" alt="{{ item?.title }}" width="100" height="100">
+          </td>
+          <td class="truncate" [title]="item?.description"
+              [innerHTML]="item?.description | slice: 0: 200">
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="updateForm(item)">Sửa</button>
+            <button (click)="deleteStory(item?.storyId)" class="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="text-center">Không có dữ liệu</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

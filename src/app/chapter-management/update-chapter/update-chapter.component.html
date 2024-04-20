@@ -1,0 +1,32 @@
+<div class="col-12 grid-margin stretch-card mb-0">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title" [innerText]="title"></h4>
+      <form class="forms-sample">
+        <div class="form-group">
+          <label>Tên chương</label>
+          <input type="text" class="form-control"
+                 name="title"
+                 [(ngModel)]="param.title" placeholder="Nhập tên chương">
+        </div>
+        <div class="form-group">
+          <label>Nội dung</label>
+          <textarea class="form-control" rows="4"
+                    name="description"
+                    [(ngModel)]="param.content" placeholder="Nhập nội dung"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Truyện</label>
+          <select class="form-control" name="story_id" [(ngModel)]="param.storyId">
+            <option value="" selected>Chọn truyện</option>
+            <option *ngFor="let story of listStory" [value]="story.storyId"
+                    [selected]="story.storyId == param.storyId">{{ story.title }}
+            </option>
+          </select>
+        </div>
+      </form>
+      <button class="btn btn-primary mt-2" (click)="update()">Xác nhận</button>
+      <button class="btn btn-secondary ms-2 mt-2" (click)="close()">Hủy</button>
+    </div>
+  </div>
+</div>

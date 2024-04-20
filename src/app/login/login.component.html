@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="logo">
+    <img
+      src="https://play-lh.googleusercontent.com/NOkPouuDukIckazXKbfgOdPhs11J6u3Ysh3LKlx0cMyhSujPlZXWZf8EStvXxforxY1j"
+      alt="">
+  </div>
+  <div class="text-center mt-4 name">
+    Đăng nhập
+  </div>
+  <form class="p-3 mt-3">
+    <div class="form-field d-flex align-items-center">
+      <span class="far fa-user"></span>
+      <input type="text" name="userName" [(ngModel)]="param.username" id="userName" placeholder="Username">
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fas fa-key"></span>
+      <input type="password" name="password" [(ngModel)]="param.password" id="pwd" placeholder="Password">
+    </div>
+    <button class="btn mt-3" (click)="login()">Đăng nhập</button>
+  </form>
+  <div class="text-center fs-6">
+    <a href="javascript:;">Forget password?</a> or <a href="javascript:;">Sign up</a>
+  </div>
+</div>
